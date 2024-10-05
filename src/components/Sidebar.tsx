@@ -5,11 +5,18 @@ import { IoGridOutline } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { GiOrganigram } from "react-icons/gi";
 import { IoMdPerson } from "react-icons/io";
+import { useRouter } from "next/router"; // Importando useRouter
 
 export default function Sidebar() {
+  const router = useRouter(); // Hook do Next.js para pegar a rota atual
   const [activeParent, setActiveParent] = useState<string | null>(null);
 
-  // Função para definir qual item foi clicado
+  // Função para verificar se a rota está ativa
+  const isActive = (route: string) => {
+    return router.pathname.includes(route);
+  };
+
+  // Função para alternar o dropdown
   const handleParentClick = (parent: string) => {
     setActiveParent(parent === activeParent ? null : parent); // Ativa/desativa o item clicado
   };
@@ -31,7 +38,7 @@ export default function Sidebar() {
             <div
               onClick={() => handleParentClick("colegiado")}
               className={`${styles.dropdownHeader} ${
-                activeParent === "colegiado" ? styles.active : ""
+                isActive("/colegiado") ? styles.active : ""
               }`}
             >
               <IoGridOutline />
@@ -59,7 +66,7 @@ export default function Sidebar() {
             <div
               onClick={() => handleParentClick("departamento")}
               className={`${styles.dropdownHeader} ${
-                activeParent === "departamento" ? styles.active : ""
+                isActive("/departamento") ? styles.active : ""
               }`}
             >
               <GiOrganigram />
@@ -84,7 +91,7 @@ export default function Sidebar() {
             <div
               onClick={() => handleParentClick("area")}
               className={`${styles.dropdownHeader} ${
-                activeParent === "area" ? styles.active : ""
+                isActive("/area") ? styles.active : ""
               }`}
             >
               <FaChalkboardTeacher />
@@ -109,7 +116,7 @@ export default function Sidebar() {
             <div
               onClick={() => handleParentClick("professor")}
               className={`${styles.dropdownHeader} ${
-                activeParent === "professor" ? styles.active : ""
+                isActive("/professor") ? styles.active : ""
               }`}
             >
               <IoMdPerson />

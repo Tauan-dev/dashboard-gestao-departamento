@@ -134,7 +134,10 @@
   color: #ff6b6b;
 }
 
-/* Classe para manter o item clicado com a cor ativa */
+.active {
+  background-color: #a468ec;
+  color: white;
+}
 
 .logo {
   display: flex;
