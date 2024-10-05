@@ -1,0 +1,190 @@
+/* Estilo da sidebar */
+.sidebar {
+  width: 330px;
+  height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border: solid 1px #6c757d;
+}
+
+/* Estilo da área do perfil */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.profileImage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+/* Estilo da navegação */
+.nav ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.nav li {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.nav a {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #6c757d;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.nav a.active {
+  background-color: #a468ec;
+  color: white;
+}
+
+/* Dropdown para os submenus */
+.dropdownHeader {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  width: 280px;
+  height: 50px;
+  padding: 10px 20px;
+  color: #809fb8;
+  font-family: "Inter";
+  font-weight: bold;
+  border-radius: 7px;
+  border: solid 1px #a468ec;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Classe para manter o item clicado com a cor ativa */
+.active {
+  background-color: #a468ec;
+  color: white;
+}
+
+/* Setas para dropdown */
+.arrowDown::after {
+  content: "⌄";
+  font-size: 12px;
+}
+
+.arrowUp::after {
+  content: "⌃";
+  font-size: 12px;
+}
+
+/* Submenu do dropdown */
+.dropdownMenu {
+  list-style: none;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-size: 15px;
+  margin: 0;
+  max-height: 0; /* Inicia fechado */
+  opacity: 0; /* Inicia invisível */
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease; /* Suaviza a transição de altura e opacidade */
+}
+
+.dropdownMenu.open {
+  max-height: 500px; /* Altura máxima quando aberto */
+  opacity: 1; /* Totalmente visível */
+}
+
+/* Estilo para o li no submenu */
+.dropdownMenu li {
+  margin-bottom: 10px;
+}
+
+.dropdownMenu li a {
+  color: #6c757d;
+  text-decoration: none;
+}
+
+.dropdownMenu li a:hover {
+  color: #1a8b1a;
+}
+
+/* Estilo para a área de logout */
+.logout {
+  margin-top: auto;
+}
+
+.logout a {
+  display: flex;
+  align-items: center;
+  color: #6c757d;
+  text-decoration: none;
+}
+
+.logout a:hover {
+  color: #ff6b6b;
+}
+
+/* Classe para manter o item clicado com a cor ativa */
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 280px;
+  height: 100px;
+  margin-bottom: 10px;
+  font-family: "Inter";
+  font-weight: bold;
+  color: #809fb8;
+}
+/* Estilo para o ícone ao lado do texto */
+.icon {
+  margin-right: 10px;
+}
+
+/* Estilo do ícone personalizado */
+.icon-wrapper {
+  width: 50px;
+  height: 50px;
+  background-color: #a468ec; /* Cor roxa */
+  border-radius: 12px; /* Borda arredondada */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.icon-wrapper.clicked {
+  background-color: #6c757d; /* Mudança de cor ao clicar */
+}
+
+.icon-bar {
+  width: 30px;
+  height: 5px;
+  background-color: white; /* Cor branca das barras */
+  border-radius: 5px;
+  position: absolute;
+}
+
+/* Ajustes para que as barras fiquem paralelas */
+.icon-bar:first-child {
+  transform: rotate(15deg); /* Inclinação diagonal */
+  top: 18px; /* Ajuste de posicionamento */
+}
+
+.icon-bar:last-child {
+  transform: rotate(15deg); /* Mesma inclinação para serem paralelas */
+  top: 30px; /* Ajuste de posicionamento */
+}
