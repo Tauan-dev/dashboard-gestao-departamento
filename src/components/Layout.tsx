@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import Sidebar from "./Sidebar"; 
-
+import Sidebar from "./Sidebar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Sidebar />
 
       {/* O conteúdo principal muda dinamicamente */}
-      <div style={{ flexGrow: 1, padding: "20px" }}>
+      <div style={{ flexGrow: 1 }}>
         {children} {/* Aqui será renderizado o conteúdo de cada página */}
       </div>
     </div>

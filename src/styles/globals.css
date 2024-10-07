@@ -1,7 +1,24 @@
 :root {
-  --background: #ffffff;
+  --background-color: #ebeef1d8;
   --foreground: #171717;
+  --button-color1: #a468ec;
+  --button-color2: #ffffff;
+  --button-color3: #838eef;
+  --button-color4: #48bb78;
+  --button-color5: #ea3a3d;
+  --card-color1: #122030;
+  --card-color2: #ffffff;
+  --title-text-color1: #a468ec;
+  --title-text-color2: #ffffff;
+  --title-text-color3: #122030;
+  --parag-text-color1: #ffffff;
+  --parag-text-color2: #122030;
+  --parag-text-color3: #718096;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -13,6 +30,7 @@
 html,
 body {
   max-width: 100vw;
+  padding: 0px;
   overflow-x: hidden;
 }
 
@@ -38,5 +56,11 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
   }
 }

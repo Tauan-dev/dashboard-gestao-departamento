@@ -1,0 +1,148 @@
+.bg header {
+  padding: 5px;
+}
+
+.bg header h2 {
+  font-family: "Inter";
+  font-weight: bolder;
+  font-size: 14px;
+  padding: 20px 0px 20px 0px;
+}
+
+.bg {
+  background-color: var(--background-color);
+  width: 100vw;
+  height: 100vh;
+  padding: 0px 0px 0px 20px;
+}
+
+.corpoDepto {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.headerName {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 330px;
+  height: 60px;
+  background-color: #ffff;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.headerTitleDiv {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-left: 4px;
+  padding: 1px;
+}
+
+.headerTitle {
+  font-size: 12px;
+  font-weight: bold;
+  font-family: "Inter";
+  color: var(--parag-text-color3);
+}
+
+.headerTitleChildren {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Inter";
+  color: var(--title-text-color3);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: var(--button-color3);
+  border-radius: 5px;
+}
+
+.iconDepto {
+  color: #ffff;
+  width: 35px;
+  height: 35px;
+}
+
+.turmTable {
+  margin-top: 45px;
+  height: 70vh;
+  width: 86vw;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header h2 {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.addButton {
+  background-color: #a468ec;
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tableHeader {
+  background-color: #f3f4f6;
+  font-weight: bold;
+}
+
+.tableRow {
+  border-bottom: 1px solid #ddd;
+}
+
+.tableCell {
+  padding: 12px;
+  text-align: left;
+  font-size: 14px;
+  font-family: "Inter";
+  color: var(--title-text-color3);
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationButton {
+  background-color: #f1f5f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.paginationButton:hover {
+  background-color: #e2e8f0;
+}

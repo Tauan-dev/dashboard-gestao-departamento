@@ -7,7 +7,6 @@
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  border: solid 1px #6c757d;
 }
 
 /* Estilo da área do perfil */
@@ -75,23 +74,10 @@
   color: white;
 }
 
-/* Setas para dropdown */
-.arrowDown::after {
-  content: "⌄";
-  font-size: 12px;
-}
-
-.arrowUp::after {
-  content: "⌃";
-  font-size: 12px;
-}
-
 /* Submenu do dropdown */
 .dropdownMenu {
   list-style: none;
-  padding-left: 20px;
-  padding-top: 10px;
-  font-size: 15px;
+  font-size: 14px;
   margin: 0;
   max-height: 0; /* Inicia fechado */
   opacity: 0; /* Inicia invisível */
@@ -132,11 +118,6 @@
 
 .logout a:hover {
   color: #ff6b6b;
-}
-
-.active {
-  background-color: #a468ec;
-  color: white;
 }
 
 .logo {
@@ -183,11 +164,11 @@
 
 /* Ajustes para que as barras fiquem paralelas */
 .icon-bar:first-child {
-  transform: rotate(15deg); /* Inclinação diagonal */
-  top: 18px; /* Ajuste de posicionamento */
+  transform: rotate(160deg); /* Inclinação diagonal */
+  top: 16px; /* Ajuste de posicionamento */
 }
 
 .icon-bar:last-child {
-  transform: rotate(15deg); /* Mesma inclinação para serem paralelas */
-  top: 30px; /* Ajuste de posicionamento */
+  transform: rotate(160deg); /* Mesma inclinação para serem paralelas */
+  top: 28px; /* Ajuste de posicionamento */
 }

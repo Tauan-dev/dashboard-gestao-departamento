@@ -1,0 +1,25 @@
+.breadcrumb {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  color: #6c757d;
+}
+
+.link {
+  color: #a468ec;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.separator {
+  margin: 0 8px;
+  color: #6c757d;
+}
+
+.active {
+  color: #2b2b2b;
+}
