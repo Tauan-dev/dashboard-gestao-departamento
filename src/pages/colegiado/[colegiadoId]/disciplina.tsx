@@ -130,9 +130,9 @@ export default function Disciplina() {
             <tbody>
               {disciplinas.length ? (
                 disciplinas.map((disciplina) => (
-                  <tr key={disciplina.id}>
-                    <td>{disciplina.cod}</td>
-                    <td>{disciplina.nome}</td>
+                  <tr key={disciplina.id} className={styles.tableRow}>
+                    <td className={styles.tableCell}>{disciplina.cod}</td>
+                    <td className={styles.tableCell}>{disciplina.nome}</td>
                     <td>
                       <ModalComponent disciplina={disciplina} />
                     </td>

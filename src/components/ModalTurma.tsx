@@ -124,6 +124,7 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                         <input
                           placeholder="T01"
                           className={styles.formControl}
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -171,7 +172,9 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                   name="disciplina"
                   render={({ field }) => <input type="hidden" value={id} />}
                 />
-                <button type="submit">Salvar</button>
+                <button className={styles.buttonSave} type="submit">
+                  Enviar Demanda
+                </button>
               </form>
             </Form>
           </div>
@@ -180,8 +183,3 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
     </>
   );
 }
-
-
-
-
-
