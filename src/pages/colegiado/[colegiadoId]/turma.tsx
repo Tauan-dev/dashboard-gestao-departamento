@@ -1,11 +1,43 @@
-import React from "react";
-import styles from "../../styles/Turma.module.css";
+import React, { useEffect, useState } from "react";
+import styles from "../../../styles/Turma.module.css";
 import Image from "next/image";
 import { BsMortarboard } from "react-icons/bs";
 import { RiAddLine } from "react-icons/ri";
 import Breadcrumbs from "@/components/Breadcumber";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+interface Colegiado {
+  id: number;
+  sigla: string;
+  img: string;
+}
 
 export default function Turma() {
+  const [colegiado, setColegiado] = useState<Colegiado | null>(null);
+  const router = useRouter();
+  const { colegiadoId } = router.query;
+
+  // Função para buscar os dados do colegiado
+  const fetchColegiado = async (colegiadoId: string | string[] | undefined) => {
+    if (!colegiadoId) return; // Certifique-se de que o ID está disponível
+    try {
+      const response = await fetch(
+        `http://localhost:3000/colegiado/curso/${colegiadoId}`
+      );
+      const data = await response.json();
+      setColegiado(data); // Salva os dados do colegiado
+    } catch (error) {
+      console.error("Erro ao buscar dados do colegiado:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (colegiadoId) {
+      fetchColegiado(colegiadoId); // Busca os dados quando o ID estiver disponível
+    }
+  }, [colegiadoId]);
+
   const data = [
     {
       disciplina: "Algoritmos",
@@ -31,11 +63,16 @@ export default function Turma() {
             <div className={styles.headerTitleDiv}>
               <span className={styles.headerTitle}>COLEGIADO</span>
               <span className={styles.headerTitleChildren}>
-                Ciências da Computação
+                {colegiado ? colegiado.sigla : "Carregando"}
               </span>
             </div>
             <div className={styles.icon}>
-              <Image src="/colcic.png" alt="Logo" width={35} height={35} />
+              <Image
+                src={`/${colegiado?.img}`}
+                alt="Logo"
+                width={35}
+                height={35}
+              />
             </div>
           </div>
           <div className={styles.headerName}>
@@ -55,9 +92,11 @@ export default function Turma() {
         <div className={styles.container}>
           <div className={styles.header}>
             <h2>Turmas</h2>
-            <button className={styles.addButton}>
-              <RiAddLine />
-            </button>
+            <Link href={`/colegiado/${colegiadoId}/disciplina`} passHref>
+              <button className={styles.addButton}>
+                <RiAddLine />
+              </button>
+            </Link>
           </div>
 
           <table className={styles.table}>
