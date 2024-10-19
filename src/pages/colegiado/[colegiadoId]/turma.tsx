@@ -6,6 +6,31 @@ import { RiAddLine } from "react-icons/ri";
 import Breadcrumbs from "@/components/Breadcumber";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Badge } from "@/components/ui/badge";
+
+// Interfaces definidas para o Colegiado e Turmas
+interface Curso {
+  id: number;
+  nome: string;
+  tipo: string;
+}
+
+interface Disciplina {
+  id: number;
+  cod: string;
+  nome: string;
+  cargaHoraria: number;
+  cargaHorariaSemanal: number;
+  cursos: Curso[];
+}
+
+interface Turma {
+  id: number;
+  cod: string;
+  observacao: string;
+  formando: boolean;
+  disciplina: Disciplina;
+}
 
 interface Colegiado {
   id: number;
@@ -15,6 +40,7 @@ interface Colegiado {
 
 export default function Turma() {
   const [colegiado, setColegiado] = useState<Colegiado | null>(null);
+  const [turmas, setTurmas] = useState<Turma[]>([]); // Define Turma[] para o estado das turmas
   const router = useRouter();
   const { colegiadoId } = router.query;
 
@@ -32,26 +58,26 @@ export default function Turma() {
     }
   };
 
+  // Função para buscar as turmas
+  const fetchTurmas = async (colegiadoId: string | string[] | undefined) => {
+    if (!colegiadoId) return;
+    try {
+      const response = await fetch(
+        `http://localhost:3000/colegiado/turma/${colegiadoId}`
+      );
+      const data: Turma[] = await response.json(); // Tipagem para array de turmas
+      setTurmas(data);
+    } catch (error) {
+      console.error("Erro ao buscar turmas:", error);
+    }
+  };
+
   useEffect(() => {
     if (colegiadoId) {
       fetchColegiado(colegiadoId); // Busca os dados quando o ID estiver disponível
+      fetchTurmas(colegiadoId);
     }
   }, [colegiadoId]);
-
-  const data = [
-    {
-      disciplina: "Algoritmos",
-      codigo: "CET023",
-      turma: "A",
-      formando: "Sim",
-    },
-    {
-      disciplina: "Estrutura de Dados",
-      codigo: "CET021",
-      turma: "B",
-      formando: "Não",
-    },
-  ];
 
   return (
     <div className={styles.bg}>
@@ -110,14 +136,35 @@ export default function Turma() {
               </tr>
             </thead>
             <tbody>
-              {data.map((row, index) => (
-                <tr key={index} className={styles.tableRow}>
-                  <td className={styles.tableCell}>{row.codigo}</td>
-                  <td className={styles.tableCell}>{row.disciplina}</td>
-                  <td className={styles.tableCell}>{row.turma}</td>
-                  <td className={styles.tableCell}>{row.formando}</td>
+              {turmas.length ? (
+                turmas.map((turma) => (
+                  <tr key={turma.id} className={styles.tableRow}>
+                    <td className={styles.tableCell}>{turma.disciplina.cod}</td>
+                    <td className={styles.tableCell}>
+                      {turma.disciplina.nome}
+                    </td>
+                    <td className={styles.tableCell}>{turma.cod}</td>
+                    <td className={styles.tableCell}>
+                      <Badge
+                        className={
+                          turma.formando
+                            ? `${styles.formandoBadgeTrue}`
+                            : `${styles.formandoBadgeFalse}`
+                        }
+                      >
+                        {turma.formando ? "TEM" : "NÃO TEM"}
+                      </Badge>
+                    </td>
+                    <td className={styles.tableCell}>
+                      {/* Aqui você pode adicionar o horário da turma */}
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={5}>Nenhuma turma encontrada</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

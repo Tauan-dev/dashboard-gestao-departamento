@@ -152,3 +152,27 @@
   display: flex;
   gap: 6px;
 }
+
+.formandoBadgeTrue {
+  background-color: #10b981; /* Verde */
+  width: 100px;
+  display: flex;
+  padding: 2px;
+  justify-content: center;
+  font-family: "Inter";
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.formandoBadgeFalse {
+  background-color: #6b7280; /* Cinza */
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  font-family: "Inter";
+  padding: 2px;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 5px;
+}

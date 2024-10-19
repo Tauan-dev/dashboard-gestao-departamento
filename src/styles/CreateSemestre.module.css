@@ -1,0 +1,57 @@
+.create-semestre-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f4f4f9;
+  padding: 20px;
+}
+
+.create-semestre-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.create-semestre-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.create-semestre-container label {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.create-semestre-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.create-semestre-container input:focus {
+  border-color: #6200ee;
+}
+
+.create-semestre-container button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #6200ee;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.create-semestre-container button:hover {
+  background-color: #3700b3;
+}

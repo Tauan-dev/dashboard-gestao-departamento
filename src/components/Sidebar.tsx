@@ -42,11 +42,11 @@ export default function Sidebar() {
                 activeParent === "colegiado" ? styles.open : ""
               }`}
             >
+              {/* <li>
+                <Link href="/colegiado/semestre">Semestre</Link>
+              </li> */}
               <li>
-                <Link href="/colegiado/turma">Turmas</Link>
-              </li>
-              <li>
-                <Link href="/colegiado/campaign">Campaign 02</Link>
+                <Link href="/colegiado/colegiado">Colegiado</Link>
               </li>
               <li>
                 <Link href="/colegiado/meeting">Meeting 03</Link>
@@ -74,7 +74,7 @@ export default function Sidebar() {
                 <Link href="/departamento/organizacao">Organização</Link>
               </li>
               <li>
-                <Link href="/departamento/pesquisas">Pesquisas</Link>
+                <Link href="/departamento/createsemestre">Criar Semestre </Link>
               </li>
             </ul>
           </li>

@@ -2,7 +2,7 @@
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import styles from "../styles/ModalTurma.module.css";
 import { RiAddLine } from "react-icons/ri";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Form,
@@ -31,22 +31,70 @@ interface FormData {
   observacao: string;
   formando: boolean;
   disciplina: number;
-  semestre: number;
+  semestreId: number;
 }
 
 export default function ModalComponent({ disciplina }: ModalComponentProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [semestre, setSemestre] = useState<{
+    id: number;
+    semestre: string;
+  } | null>(null);
 
-  const form = useForm<FormData>();
+  const form = useForm<FormData>({
+    defaultValues: {
+      formando: false,
+      cod: "",
+      observacao: "",
+    },
+  });
 
-  const onSubmit = (data: FormData) => {
-    fetch("http://localhost:3000/turma", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+  const fetchSemestre = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/colegiado/semestreAtual`
+      );
+      const data = await response.json();
+      setSemestre(data);
+    } catch (error) {
+      console.error("Erro ao buscar semestre:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSemestre();
+  }, []);
+
+  // Função para submissão do formulário
+  const onSubmit = async (data: FormData) => {
+    console.log({
+      ...data,
+      semestreId: semestre?.id,
+      disciplinaToTurmaId: disciplina.id,
     });
+
+    try {
+      const response = await fetch("http://localhost:3000/turma", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          semestreId: semestre?.id,
+          disciplinaToTurmaId: disciplina.id,
+        }),
+      });
+
+      if (response.ok) {
+        form.reset(); // Limpa os campos do formulário após o envio bem-sucedido
+        toggleModal(); // Fecha o modal após a submissão bem-sucedida
+      } else {
+        console.error("Erro ao enviar o formulário");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar o formulário:", error);
+    }
   };
 
   const toggleModal = () => {
@@ -54,7 +102,7 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
   };
 
   const id = disciplina.id;
-  const cod = disciplina.cod;
+  const codigo = disciplina.cod;
   const nome = disciplina.nome;
 
   return (
@@ -82,8 +130,9 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                       </FormLabel>
                       <FormControl>
                         <input
+                          {...field}
                           placeholder=""
-                          value={cod}
+                          value={codigo}
                           className={styles.formControlCod}
                           readOnly
                         />
@@ -93,7 +142,7 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                   )}
                 />
                 <FormField
-                  name="codDisciplina"
+                  name="nome"
                   control={form.control}
                   render={({ field }) => (
                     <FormItem className={styles.form}>
@@ -102,6 +151,7 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                       </FormLabel>
                       <FormControl>
                         <input
+                          {...field}
                           placeholder=""
                           value={nome}
                           className={styles.formControlDisc}
@@ -122,9 +172,9 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                       </FormLabel>
                       <FormControl>
                         <input
+                          {...field}
                           placeholder="T01"
                           className={styles.formControl}
-                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -151,7 +201,6 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                     </FormItem>
                   )}
                 />
-
                 <FormField
                   name="observacao"
                   control={form.control}
@@ -161,7 +210,11 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                         OBSERVAÇÕES DO COLEGIADO
                       </FormLabel>
                       <FormControl>
-                        <input placeholder="" className={styles.formControl} />
+                        <input
+                          {...field}
+                          placeholder=""
+                          className={styles.formControl}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -170,7 +223,16 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                 <FormField
                   control={form.control}
                   name="disciplina"
-                  render={({ field }) => <input type="hidden" value={id} />}
+                  render={({ field }) => (
+                    <input type="hidden" {...field} value={id} />
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="semestreId"
+                  render={({ field }) => (
+                    <input type="hidden" {...field} value={semestre?.id} />
+                  )}
                 />
                 <button className={styles.buttonSave} type="submit">
                   Enviar Demanda

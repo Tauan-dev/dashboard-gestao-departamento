@@ -26,6 +26,8 @@ export default function Disciplina() {
   const { colegiadoId } = router.query;
   const [disciplinas, setDisciplinas] = useState<Disciplina[]>([]);
   const [colegiado, setColegiado] = useState<Colegiado | null>(null);
+  const [currentPage, setCurrentPage] = useState(1); // Página atual
+  const [itemsPerPage] = useState(15); // Número de itens por página
 
   // Função para buscar as disciplinas via API
   const fetchDisciplinas = async (
@@ -37,12 +39,12 @@ export default function Disciplina() {
         `http://localhost:3000/colegiado/${colegiadoId}`
       );
       const data = await response.json();
-      console.log("Dados recebidos:", data);
       setDisciplinas(data[0]?.disciplinas || []); // Certifica que as disciplinas existem no retorno da API
     } catch (error) {
       console.error("Erro ao buscar disciplinas:", error);
     }
   };
+
   const fetchColegiado = async (colegiadoId: string | string[] | undefined) => {
     if (!colegiadoId) return; // Certifique-se de que o ID está disponível
     try {
@@ -67,6 +69,25 @@ export default function Disciplina() {
       fetchDisciplinas(colegiadoId); // Chama a função ao obter o colegiadoId
     }
   }, [colegiadoId]);
+
+  // Lógica de paginação
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = disciplinas.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(disciplinas.length / itemsPerPage);
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
 
   return (
     <div className={styles.bg}>
@@ -128,8 +149,8 @@ export default function Disciplina() {
               </tr>
             </thead>
             <tbody>
-              {disciplinas.length ? (
-                disciplinas.map((disciplina) => (
+              {currentItems.length ? (
+                currentItems.map((disciplina) => (
                   <tr key={disciplina.id} className={styles.tableRow}>
                     <td className={styles.tableCell}>{disciplina.cod}</td>
                     <td className={styles.tableCell}>{disciplina.nome}</td>
@@ -147,12 +168,23 @@ export default function Disciplina() {
           </table>
         </div>
       </section>
-      {/* <div className={styles.pagination}>
-        <button className={styles.paginationButton}>Back</button>
-        <button className={styles.paginationButton}>1</button>
-        <button className={styles.paginationButton}>2</button>
-        <button className={styles.paginationButton}>Next</button>
-      </div> */}
+      <div className={styles.pagination}>
+        <button
+          onClick={prevPage}
+          disabled={currentPage === 1}
+          className={styles.paginationButton}
+        >
+          Back
+        </button>
+        <span>{`Página ${currentPage} de ${totalPages}`}</span>
+        <button
+          onClick={nextPage}
+          disabled={currentPage === totalPages}
+          className={styles.paginationButton}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }

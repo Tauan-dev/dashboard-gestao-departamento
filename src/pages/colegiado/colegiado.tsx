@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import styles from "../../styles/ColegiadoDropdown.module.css"; // Certifique-se de vincular o CSS
 
 interface Colegiado {
   id: number;
@@ -13,11 +14,9 @@ export default function ColegiadoDropdown() {
   );
   const router = useRouter();
 
-  // Fetch de todos os colegiados
   useEffect(() => {
     async function fetchColegiados() {
       try {
-        console.log("Tentando buscar os colegiados...");
         const response = await fetch("http://localhost:3000/colegiado");
 
         if (!response.ok) {
@@ -25,7 +24,6 @@ export default function ColegiadoDropdown() {
         }
 
         const data = await response.json();
-        console.log("Dados recebidos:", data); // Verifica se os dados estão sendo retornados
         setColegiados(data);
       } catch (error) {
         console.error("Erro ao buscar dados:", error);
@@ -35,16 +33,14 @@ export default function ColegiadoDropdown() {
     fetchColegiados();
   }, []);
 
-  // Atualiza a URL quando o colegiado é selecionado
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const colegiadoId = parseInt(event.target.value, 10);
     setSelectedColegiadoId(colegiadoId);
-    console.log("Colegiado selecionado:", colegiadoId);
-    router.push(`/colegiado/${colegiadoId}/turma`); // Atualiza a rota com o colegiadoId
+    router.push(`/colegiado/${colegiadoId}/turma`);
   };
 
   return (
-    <div>
+    <div className={styles["dropdown-container"]}>
       <label htmlFor="colegiado">Selecione um Colegiado: </label>
       <select
         id="colegiado"
