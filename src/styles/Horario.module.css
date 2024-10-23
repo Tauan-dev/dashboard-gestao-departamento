@@ -1,0 +1,116 @@
+/* Botão para abrir o modal */
+.openButton {
+  background-color: #a468ec;
+  color: white;
+  padding: 6px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.openButton:hover {
+  background-color: var(--button-color3);
+}
+
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Conteúdo do Modal */
+.modalContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modalTitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Tabela de horários */
+.tableWrapper {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #fff;
+  color: var(--button-color1);
+  font-size: 20px;
+}
+
+.unselected {
+  background-color: white;
+  color: black;
+}
+
+.confirmButton {
+  margin-top: 15px;
+  background-color: var(--button-color1);
+  color: white;
+  width: 320px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirmButton:hover {
+  background-color: var(--button-color3);
+}
+
+.timeColumn {
+  font-weight: bold;
+  text-align: center;
+  padding: 1px;
+  font-size: 12px;
+  background-color: #f3f3f3; /* Fundo diferente para destacar */
+  border-right: 1px solid #ddd;
+}
+
+.closeButton {
+  margin-top: 5px;
+  margin-left: 350px;
+  font-size: 1.4em;
+
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: var(--button-color5);
+  color: #ffff;
+}

@@ -7,6 +7,7 @@ import Breadcrumbs from "@/components/Breadcumber";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Badge } from "@/components/ui/badge";
+import ModalHorario from "@/components/ModalHorario";
 
 // Interfaces definidas para o Colegiado e Turmas
 interface Curso {
@@ -41,6 +42,8 @@ interface Colegiado {
 export default function Turma() {
   const [colegiado, setColegiado] = useState<Colegiado | null>(null);
   const [turmas, setTurmas] = useState<Turma[]>([]); // Define Turma[] para o estado das turmas
+  const [currentPage, setCurrentPage] = useState(1); // Página atual
+  const [itemsPerPage] = useState(5); // Definindo 5 itens por página
   const router = useRouter();
   const { colegiadoId } = router.query;
 
@@ -79,10 +82,18 @@ export default function Turma() {
     }
   }, [colegiadoId]);
 
+  // Lógica de paginação
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = turmas.slice(indexOfFirstItem, indexOfLastItem); // Turmas da página atual
+
+  // Função para mudar de página
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
     <div className={styles.bg}>
       <header>
-        <Breadcrumbs></Breadcrumbs>
+        <Breadcrumbs />
         <h2>Solicitação de demanda</h2>
         <div className={styles.corpoDepto}>
           <div className={styles.headerName}>
@@ -106,7 +117,6 @@ export default function Turma() {
               <span className={styles.headerTitle}> DEPARTAMENTO</span>
               <span className={styles.headerTitleChildren}> DEC</span>
             </div>
-
             <div className={styles.icon}>
               <BsMortarboard className={styles.iconDepto} />
             </div>
@@ -136,8 +146,8 @@ export default function Turma() {
               </tr>
             </thead>
             <tbody>
-              {turmas.length ? (
-                turmas.map((turma) => (
+              {currentItems.length ? (
+                currentItems.map((turma) => (
                   <tr key={turma.id} className={styles.tableRow}>
                     <td className={styles.tableCell}>{turma.disciplina.cod}</td>
                     <td className={styles.tableCell}>
@@ -156,7 +166,7 @@ export default function Turma() {
                       </Badge>
                     </td>
                     <td className={styles.tableCell}>
-                      {/* Aqui você pode adicionar o horário da turma */}
+                      <ModalHorario turmaId={turma.id} />
                     </td>
                   </tr>
                 ))
@@ -167,14 +177,26 @@ export default function Turma() {
               )}
             </tbody>
           </table>
+
+          {/* Paginação */}
+          <div className={styles.pagination}>
+            {Array.from(
+              { length: Math.ceil(turmas.length / itemsPerPage) },
+              (_, i) => (
+                <button
+                  key={i + 1}
+                  onClick={() => paginate(i + 1)}
+                  className={`${styles.pageButton} ${
+                    currentPage === i + 1 ? styles.activePage : ""
+                  }`}
+                >
+                  {i + 1}
+                </button>
+              )
+            )}
+          </div>
         </div>
       </section>
-      <div className={styles.pagination}>
-        <button className={styles.paginationButton}>Back</button>
-        <button className={styles.paginationButton}>1</button>
-        <button className={styles.paginationButton}>2</button>
-        <button className={styles.paginationButton}>Next</button>
-      </div>
     </div>
   );
 }

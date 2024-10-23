@@ -93,7 +93,7 @@ export default function Disciplina() {
     <div className={styles.bg}>
       <header>
         <Breadcrumbs></Breadcrumbs>
-        <h2>Solicitação de demanda</h2>
+        <h2>Listagem de Disciplinas</h2>
         <div className={styles.corpoDepto}>
           <div className={styles.headerName}>
             <div className={styles.headerTitleDiv}>
