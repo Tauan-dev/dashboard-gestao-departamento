@@ -1,0 +1,119 @@
+.dropdownContainer {
+  display: flex;
+  position: relative;
+  width: 250px;
+}
+
+.dropdownHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  width: 100%; /* Certifica que ocupa 100% da largura */
+  background-color: #f3f3f3;
+  border: 1px solid var(--button-color1);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.professorSelected {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scrollArea {
+  max-height: 200px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.dropdownList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%; /* Mantém o dropdown do mesmo tamanho do container */
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999; /* Garante que o dropdown fique acima de outros elementos */
+  max-height: 200px; /* Define a altura máxima */
+  overflow-y: auto; /* Habilita o scroll se necessário */
+  visibility: visible; /* Garante que o dropdown seja visível */
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.professorInfo {
+  font-family: "Inter";
+  font-size: 12px;
+  color: var(--parag-text-color3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdownItem {
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdownItem:hover {
+  background-color: #f0f0f0;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.avatarImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid #132bb4;
+}
+
+/* ScrollArea e scrollbar */
+.scrollArea {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.scrollbar {
+  display: flex;
+  user-select: none;
+  touch-action: none;
+  padding: 2px;
+  transition: background-color 0.2s ease;
+  border-radius: 10px;
+}
+
+.scrollbar:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.scrollbarThumb {
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.scrollbarThumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.scrollbarVertical {
+  width: 10px;
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+}
