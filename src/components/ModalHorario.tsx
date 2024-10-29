@@ -48,6 +48,7 @@ export default function ModalHorario({ turmaId }: ModalHorarioProps) {
 
   // Submissão para associar os horários selecionados à turma
   const onSubmit = async () => {
+    event?.preventDefault();
     try {
       const response = await fetch("http://localhost:3000/turma/horario", {
         method: "POST",

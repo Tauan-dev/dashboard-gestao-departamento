@@ -9,14 +9,20 @@ interface Professor {
   img: string;
 }
 
-export default function ProfessorDropdown() {
+interface ProfessorDropdownProps {
+  onSelect: (professorMatricula: number) => void; // Prop para enviar a matrícula do professor selecionado
+}
+
+export default function ProfessorDropdown({
+  onSelect,
+}: ProfessorDropdownProps) {
   const router = useRouter();
   const { areaId } = router.query;
   const [professores, setProfessores] = useState<Professor[]>([]);
   const [selectedProfessor, setSelectedProfessor] = useState<Professor | null>(
     null
-  ); // Estado para armazenar o professor selecionado
-  const [isOpen, setIsOpen] = useState(false); // Estado para controlar se o dropdown está aberto
+  );
+  const [isOpen, setIsOpen] = useState(false);
 
   // Função para buscar professores via API
   const fetchProfessores = async (areaId: string | string[] | undefined) => {
@@ -45,6 +51,7 @@ export default function ProfessorDropdown() {
   const handleSelectProfessor = (professor: Professor) => {
     setSelectedProfessor(professor); // Armazena o professor selecionado
     setIsOpen(false); // Fecha o dropdown após a seleção
+    onSelect(professor.matricula); // Chama a função passada via prop com a matrícula do professor
   };
 
   return (
@@ -60,8 +67,7 @@ export default function ProfessorDropdown() {
                 alt={selectedProfessor.nome}
               />
             </Avatar>
-            {selectedProfessor.nome}{" "}
-            {/* Mostra apenas os dois primeiros nomes */}
+            {selectedProfessor.nome}
           </div>
         ) : (
           <span>Selecionar Professor</span>
@@ -85,7 +91,7 @@ export default function ProfessorDropdown() {
                     alt={professor.nome}
                   />
                 </Avatar>
-                {professor.nome} {/* Mostra apenas os dois primeiros nomes */}
+                {professor.nome}
               </div>
             </li>
           ))}

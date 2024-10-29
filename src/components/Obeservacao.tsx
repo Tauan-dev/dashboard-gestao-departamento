@@ -36,26 +36,29 @@ export default function Observacao({ turma, onClose }: SidebarProps) {
         <IoClose />
       </button>
       <h2 className={styles.title}>Observação</h2>
-      <p className={styles.cod}>#{turma.disciplina.cod}</p>
       <div className={styles.board}>
         <div className={styles.obsboard1}>
+          <p className={styles.cod}>#{turma.disciplina.cod}</p>
           <p className={styles.observacao}>{turma.observacao}</p>
           {turma.formando && (
             <span className={styles.formandoBadge}>Formando</span>
           )}
         </div>
         <div className={styles.obsboard2}>
+          <p className={styles.cod}>#{turma.disciplina.cod}</p>
           <div className={styles.horarios}>
             <h3>Horários:</h3>
-            {turma.horarios.length > 0 ? (
-              turma.horarios.map((h) => (
-                <div key={h.id} className={styles.horario}>
-                  {h.dia}: {h.horario}
-                </div>
-              ))
-            ) : (
-              <p>Sem horários</p>
-            )}
+            <div className={styles.obsgrid}>
+              {turma.horarios.length > 0 ? (
+                turma.horarios.map((h) => (
+                  <div key={h.id} className={styles.horario}>
+                    {h.dia}: {h.horario}
+                  </div>
+                ))
+              ) : (
+                <p>Sem horários</p>
+              )}
+            </div>
           </div>
         </div>
       </div>

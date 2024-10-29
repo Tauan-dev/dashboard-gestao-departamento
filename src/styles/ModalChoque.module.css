@@ -1,0 +1,66 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 590px;
+  max-height: 205px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.title {
+  font-size: 18px;
+  font-family: "Inter";
+  font-weight: 600;
+}
+.msg {
+  font-size: 14px;
+  font-family: "Inter";
+  font-weight: 600;
+  color: var(--parag-text-color2);
+}
+.spam {
+  font-size: 12px;
+  font-family: "Inter";
+  font-weight: 600;
+  color: var(--parag-text-color3);
+}
+
+.buttonConform {
+  width: 90px;
+  height: 35px;
+  background-color: var(--button-color4);
+  font-family: "Inter";
+  color: #fff;
+  font-size: 12px;
+  border-radius: 9px;
+}
+
+.buttonCancel {
+  width: 90px;
+  height: 35px;
+  font-family: "Inter";
+  border: 1px solid var(--button-color5);
+  font-size: 12px;
+  border-radius: 9px;
+}

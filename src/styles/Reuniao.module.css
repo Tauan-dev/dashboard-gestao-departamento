@@ -202,8 +202,8 @@
 
 .obs {
   background-color: #a468ec;
+  padding: 5px;
   color: white;
-  padding: 3px;
   border-radius: 5px;
   font-size: 14px;
   border: none;
@@ -213,4 +213,20 @@
 
 .obs:hover {
   background-color: var(--button-color3);
+}
+
+.submitButton {
+  width: 240px;
+  height: 65px;
+  background-color: var(--button-color1);
+  color: #ffff;
+  border-radius: 10px;
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.snackbar {
+  background-color: red;
+  color: #ffff;
 }

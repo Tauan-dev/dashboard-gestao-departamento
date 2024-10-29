@@ -45,15 +45,16 @@
 }
 
 .obsboard1 {
-  border: solid 1px #000;
+  border: solid 1px var(--parag-text-color3);
   height: 135px;
   border-radius: 10px;
   padding: 15px;
 }
 
 .obsboard2 {
-  border: solid 1px #000;
-  height: 135px;
+  border: solid 1px var(--parag-text-color3);
+  font-family: "Inter";
+  min-height: 135px;
   border-radius: 10px;
   padding: 15px;
 }
@@ -77,10 +78,25 @@
 }
 
 .horarios {
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
-.horario {
+.obsgrid {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+
+.horarios h3 {
   font-size: 16px;
+  font-family: "Inter";
+  font-weight: bold;
+}
+.horario {
+  font-size: 12px;
   margin-bottom: 5px;
+  color: var(--parag-text-color3);
 }

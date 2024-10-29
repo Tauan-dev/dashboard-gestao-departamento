@@ -43,7 +43,7 @@ export default function Turma() {
   const [colegiado, setColegiado] = useState<Colegiado | null>(null);
   const [turmas, setTurmas] = useState<Turma[]>([]); // Define Turma[] para o estado das turmas
   const [currentPage, setCurrentPage] = useState(1); // Página atual
-  const [itemsPerPage] = useState(5); // Definindo 5 itens por página
+  const [itemsPerPage] = useState(9); // Definindo 5 itens por página
   const router = useRouter();
   const { colegiadoId } = router.query;
 
@@ -177,26 +177,24 @@ export default function Turma() {
               )}
             </tbody>
           </table>
-
-          {/* Paginação */}
-          <div className={styles.pagination}>
-            {Array.from(
-              { length: Math.ceil(turmas.length / itemsPerPage) },
-              (_, i) => (
-                <button
-                  key={i + 1}
-                  onClick={() => paginate(i + 1)}
-                  className={`${styles.pageButton} ${
-                    currentPage === i + 1 ? styles.activePage : ""
-                  }`}
-                >
-                  {i + 1}
-                </button>
-              )
-            )}
-          </div>
         </div>
       </section>
+      <div className={styles.pagination}>
+        {Array.from(
+          { length: Math.ceil(turmas.length / itemsPerPage) },
+          (_, i) => (
+            <button
+              key={i + 1}
+              onClick={() => paginate(i + 1)}
+              className={`${styles.pageButton} ${
+                currentPage === i + 1 ? styles.activePage : ""
+              }`}
+            >
+              {i + 1}
+            </button>
+          )
+        )}
+      </div>
     </div>
   );
 }
