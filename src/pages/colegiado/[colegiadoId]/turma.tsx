@@ -130,7 +130,7 @@ export default function Turma() {
             <h2>Turmas</h2>
             <Link href={`/colegiado/${colegiadoId}/disciplina`} passHref>
               <button className={styles.addButton}>
-                <RiAddLine />
+                <RiAddLine size={26} />
               </button>
             </Link>
           </div>

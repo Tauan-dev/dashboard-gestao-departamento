@@ -76,7 +76,7 @@ export default function ModalHorario({ turmaId }: ModalHorarioProps) {
   return (
     <>
       <button className={styles.openButton} onClick={toggleModal}>
-        <MdOutlineAccessTime />
+        <MdOutlineAccessTime  size={20}/>
       </button>
 
       {isOpen && (

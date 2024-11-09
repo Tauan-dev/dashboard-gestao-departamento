@@ -113,7 +113,7 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
         )}
         <DialogTrigger asChild>
           <button className={styles.addButton} onClick={toggleModal}>
-            <RiAddLine />
+            <RiAddLine size={20} />
           </button>
         </DialogTrigger>
         <DialogContent className={styles.modal}>
@@ -234,9 +234,11 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                     <input type="hidden" {...field} value={semestre?.id} />
                   )}
                 />
-                <button className={styles.buttonSave} type="submit">
-                  Enviar Demanda
-                </button>
+                <div className={styles.modalFooter}>
+                  <button className={styles.buttonSave} type="submit">
+                    Enviar Demanda
+                  </button>
+                </div>
               </form>
             </Form>
           </div>

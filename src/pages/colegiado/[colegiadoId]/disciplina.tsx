@@ -135,7 +135,7 @@ export default function Disciplina() {
             <h2>Tabela de Disciplinas</h2>
             <Link href={`/colegiado/${colegiadoId}/turma`} passHref>
               <button className={styles.addButton}>
-                <FaArrowLeftLong />
+                <FaArrowLeftLong size={24}/>
               </button>
             </Link>
           </div>

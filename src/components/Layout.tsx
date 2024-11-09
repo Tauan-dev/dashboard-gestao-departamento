@@ -7,12 +7,12 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", minHeight: "100%"}}>
       {/* Sidebar fica fixo à esquerda */}
       <Sidebar />
 
       {/* O conteúdo principal muda dinamicamente */}
-      <div style={{ flexGrow: 1 }}>
+      <div style={{ width:"100%", minHeight: "100vh"}}>
         {children} {/* Aqui será renderizado o conteúdo de cada página */}
       </div>
     </div>

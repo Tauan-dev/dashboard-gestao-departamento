@@ -11,9 +11,9 @@
 
 .bg {
   background-color: var(--background-color);
-  width: 100vw;
-  height: 100vh;
-  padding: 0px 0px 0px 20px;
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px;
 }
 
 .corpoDepto {
@@ -75,8 +75,7 @@
 
 .turmTable {
   margin-top: 45px;
-  height: 70vh;
-  width: 86vw;
+  width: 100%;
   border-radius: 10px;
   background-color: #fff;
 }
@@ -119,6 +118,7 @@
 
 .tableRow {
   border-bottom: 1px solid #ddd;
+  padding: 5px;
 }
 
 .tableCell {
@@ -130,7 +130,7 @@
 }
 
 .pagination {
-  margin-top: 20px;
+  margin: 20px 0px;
   display: flex;
   justify-content: center;
   gap: 4px;
@@ -189,16 +189,22 @@
   margin: 0 5px;
   padding: 10px 15px;
   cursor: pointer;
+  color: black;
   font-size: 14px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
 .pageButton:hover {
-  background-color: #e0e0e0;
+  background-color: #e0e0e0bf;
 }
 
 .activePage {
   background-color: var(--button-color1);
   color: white;
+}
+
+.activePage:hover {
+  background-color: var(--button-color1);
+  opacity: 0.9;
 }
