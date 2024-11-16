@@ -11,9 +11,9 @@
 
 .bg {
   background-color: var(--background-color);
-  width: 100vw;
-  height: 100vh;
-  padding: 0px 0px 0px 20px;
+  width: 100%;
+  height: 100%;
+  padding: 0px 20px;
 }
 
 .corpoDepto {
@@ -132,20 +132,31 @@
 
 /* Estilo da tabela ajustado */
 .table {
-  min-width: 1800px; /* Ajusta a tabela para ocupar toda a largura do container */
+  width: 100%; /* Ajusta a tabela para ocupar toda a largura do container */
   border-collapse: collapse;
   margin-top: 10px;
   font-family: "Inter";
   font-size: 12px;
   color: var(--parag-text-color2);
   padding: 5px;
-  margin-left: 7px;
 }
 
 .tableHeader {
   background-color: #e3e3f5;
   font-family: "Inter";
   font-size: 14px;
+  text-align: left;
+}
+
+.tableHeader > tr > th {
+  padding: 6px;
+}
+
+.tableHeader > tr :last-child {
+  border-top-right-radius: 4px;
+}
+.tableHeader > tr :first-child {
+  border-top-left-radius: 4px;
 }
 
 .tableCell {
@@ -157,13 +168,17 @@
 }
 
 .tableRow {
-  border: 1px solid #2111b1;
+  border-bottom: 1px solid #2111b1;
   font-family: "Inter";
   font-size: 13px;
 }
 
 .tableRow:nth-child(even) {
   background-color: #f8f9fa;
+}
+
+.tableRow >  td{
+  padding: 4px;
 }
 
 .badge {
@@ -229,4 +244,10 @@
 .snackbar {
   background-color: red;
   color: #ffff;
+}
+
+.buttonArea{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
 }

@@ -20,6 +20,7 @@ const ConflictModal: React.FC<ConflictModalProps> = ({
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.msg}>{message}</p>
         <p className={styles.spam}>Deseja continuar mesmo assim?</p>
+        <div></div>
         <div className={styles.modalActions}>
           <button className={styles.buttonCancel} onClick={onClose}>
             Cancelar
