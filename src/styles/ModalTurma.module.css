@@ -33,7 +33,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  min-width: 420px;
+  min-width: 820px;
   max-width: 1044px;
 }
 
@@ -54,7 +54,7 @@
   gap: 8px;
 }
 
-.modalFooter{
+.modalFooter {
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -63,17 +63,23 @@
 
 .formcheck {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   gap: 3px;
-  border: 1px solid #a468ec;
+  padding: 5px;
   width: 200px;
   border-radius: 4px;
 }
 
 .checkbox {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
+  border: 1px solid #a468ec;
+}
+
+.checkmodal {
+  display: flex;
+  justify-content: space-between;
 }
 
 .formLabel {
@@ -134,4 +140,16 @@
   font-size: 12px;
   border-radius: 5px;
   text-wrap: nowrap;
+}
+
+.closeButton {
+  margin-top: 5px;
+  margin-left: 350px;
+  font-size: 1.4em;
+  cursor: pointer;
+}
+
+.closeButton:hover {
+  background-color: var(--button-color5);
+  color: #ffff;
 }

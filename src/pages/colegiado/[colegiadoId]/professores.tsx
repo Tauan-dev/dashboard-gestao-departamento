@@ -192,7 +192,7 @@ export default function AlocacoesColegiado() {
                         onClick={() => handleObservacaoClick(turma)}
                         type="button"
                       >
-                        <PiBellSimple />
+                        <PiBellSimple size={20}/>
                       </button>
                     </td>
                   </tr>

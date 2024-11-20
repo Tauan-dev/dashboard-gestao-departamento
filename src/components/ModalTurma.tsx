@@ -12,6 +12,8 @@ import {
   FormLabel,
   FormMessage,
 } from "./ui/form";
+import { IoClose } from "react-icons/io5";
+import { MdClose } from "react-icons/md";
 
 interface Disciplina {
   id: number;
@@ -118,6 +120,9 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
         </DialogTrigger>
         <DialogContent className={styles.modal}>
           <div className={styles.modalContent}>
+            <button className={styles.closeButton} onClick={toggleModal}>
+              <MdClose />
+            </button>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
@@ -162,45 +167,48 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  name="cod"
-                  control={form.control}
-                  render={({ field }) => (
-                    <FormItem className={styles.form}>
-                      <FormLabel className={styles.formLabel}>
-                        CÓDIGO DA TURMA
-                      </FormLabel>
-                      <FormControl>
-                        <input
-                          {...field}
-                          placeholder="T01"
-                          className={styles.formControl}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="formando"
-                  render={({ field }) => (
-                    <FormItem className={styles.formcheck}>
-                      <FormControl>
-                        <input
-                          type="checkbox"
-                          checked={field.value}
-                          onChange={field.onChange}
-                          className={styles.checkbox}
-                        />
-                      </FormControl>
-                      <FormLabel className={styles.formLabel}>
-                        TEM FORMANDO?
-                      </FormLabel>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <div className={styles.checkmodal}>
+                  <FormField
+                    name="cod"
+                    control={form.control}
+                    render={({ field }) => (
+                      <FormItem className={styles.form}>
+                        <FormLabel className={styles.formLabel}>
+                          CÓDIGO DA TURMA
+                        </FormLabel>
+                        <FormControl>
+                          <input
+                            {...field}
+                            placeholder="T01"
+                            className={styles.formControl}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="formando"
+                    render={({ field }) => (
+                      <FormItem className={styles.formcheck}>
+                        <FormControl>
+                          <input
+                            type="checkbox"
+                            checked={field.value}
+                            onChange={field.onChange}
+                            className={styles.checkbox}
+                          />
+                        </FormControl>
+                        <FormLabel className={styles.formLabel}>
+                          TEM FORMANDO?
+                        </FormLabel>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
                 <FormField
                   name="observacao"
                   control={form.control}

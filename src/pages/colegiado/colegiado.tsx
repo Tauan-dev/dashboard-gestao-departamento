@@ -40,7 +40,7 @@ export default function ColegiadoDropdown() {
   };
 
   return (
-    <div className={styles["dropdown-container"]}>
+    <div className={styles.dropdown_container}>
       <label htmlFor="colegiado">Selecione um Colegiado: </label>
       <select
         id="colegiado"

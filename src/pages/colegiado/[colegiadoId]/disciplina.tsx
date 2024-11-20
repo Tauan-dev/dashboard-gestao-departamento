@@ -75,19 +75,8 @@ export default function Disciplina() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = disciplinas.slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(disciplinas.length / itemsPerPage);
-
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
+  // Função para mudar de página
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
     <div className={styles.bg}>
@@ -135,7 +124,7 @@ export default function Disciplina() {
             <h2>Tabela de Disciplinas</h2>
             <Link href={`/colegiado/${colegiadoId}/turma`} passHref>
               <button className={styles.addButton}>
-                <FaArrowLeftLong size={24}/>
+                <FaArrowLeftLong size={24} />
               </button>
             </Link>
           </div>
@@ -169,21 +158,20 @@ export default function Disciplina() {
         </div>
       </section>
       <div className={styles.pagination}>
-        <button
-          onClick={prevPage}
-          disabled={currentPage === 1}
-          className={styles.paginationButton}
-        >
-          Back
-        </button>
-        <span>{`Página ${currentPage} de ${totalPages}`}</span>
-        <button
-          onClick={nextPage}
-          disabled={currentPage === totalPages}
-          className={styles.paginationButton}
-        >
-          Next
-        </button>
+        {Array.from(
+          { length: Math.ceil(disciplinas.length / itemsPerPage) },
+          (_, i) => (
+            <button
+              key={i + 1}
+              onClick={() => paginate(i + 1)}
+              className={`${styles.pageButton} ${
+                currentPage === i + 1 ? styles.activePage : ""
+              }`}
+            >
+              {i + 1}
+            </button>
+          )
+        )}
       </div>
     </div>
   );

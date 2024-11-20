@@ -165,28 +165,33 @@
 .pagination {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 20px 0px;
+  margin-top: 20px;
 }
 
-.paginationButton {
+.pageButton {
+  background-color: #f0f0f0;
+  border: none;
+  margin: 0 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  color: black;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.pageButton:hover {
+  background-color: #e0e0e0bf;
+}
+
+.activePage {
   background-color: var(--button-color1);
   color: white;
-  border: none;
-  padding: 8px 16px;
-  margin: 0 5px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.paginationButton:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-}
-
-.paginationButton:not(:disabled):hover {
-  background-color: var(--button-color3);
+.activePage:hover {
+  background-color: var(--button-color1);
+  opacity: 0.9;
 }
 
 /* Tamanho padrão para desktops */

@@ -5,13 +5,17 @@ import { IoGridOutline } from "react-icons/io5";
 import { FaChalkboardTeacher } from "react-icons/fa";
 import { GiOrganigram } from "react-icons/gi";
 import { IoMdPerson } from "react-icons/io";
+import { useRouter } from "next/router";
 
 export default function Sidebar() {
   const [activeParent, setActiveParent] = useState<string | null>(null);
+  const router = useRouter();
+  const { colegiadoId } = router.query;
 
   // Função para definir qual item foi clicado
   const handleParentClick = (parent: string) => {
     setActiveParent(parent === activeParent ? null : parent); // Ativa/desativa o item clicado
+    console.log(colegiadoId);
   };
 
   return (
@@ -21,7 +25,7 @@ export default function Sidebar() {
           <div className={styles["icon-bar"]}></div>
           <div className={styles["icon-bar"]}></div>
         </div>
-        <span>Tenho que inventar algum nome</span>
+        <span>Plataforma Aegis</span>
       </div>
 
       <nav className={styles.nav}>
@@ -46,10 +50,12 @@ export default function Sidebar() {
                 <Link href="/colegiado/semestre">Semestre</Link>
               </li> */}
               <li>
-                <Link href="/colegiado/colegiado">Colegiado</Link>
+                <Link href="/colegiado/colegiado">Selecionar colegiado</Link>
               </li>
               <li>
-                <Link href="/colegiado/meeting">Meeting 03</Link>
+                <Link href={`/colegiado/${colegiadoId}/professores`}>
+                  Professores Alocados
+                </Link>
               </li>
             </ul>
           </li>
@@ -70,9 +76,6 @@ export default function Sidebar() {
                 activeParent === "departamento" ? styles.open : ""
               }`}
             >
-              <li>
-                <Link href="/departamento/organizacao">Organização</Link>
-              </li>
               <li>
                 <Link href="/departamento/createsemestre">Criar Semestre </Link>
               </li>
@@ -96,8 +99,9 @@ export default function Sidebar() {
               }`}
             >
               <li>
-                <Link href="/area/desenvolvimento">Desenvolvimento</Link>
+                <Link href="/area/area">Selecionar Area</Link>
               </li>
+
               <li>
                 <Link href="/area/inovacao">Inovação</Link>
               </li>
@@ -130,10 +134,6 @@ export default function Sidebar() {
           </li>
         </ul>
       </nav>
-
-      <div className={styles.logout}>
-        <Link href="/logout">Logout</Link>
-      </div>
     </div>
   );
 }

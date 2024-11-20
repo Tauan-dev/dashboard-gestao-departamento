@@ -186,8 +186,8 @@ export default function ReuniaoArea() {
               <Image
                 src={"/default_image_path.png"}
                 alt="Logo"
-                width={35}
-                height={35}
+                width={45}
+                height={45}
                 style={{ width: "auto", height: "auto" }}
               />
             </div>
@@ -256,16 +256,18 @@ export default function ReuniaoArea() {
                           onClick={() => handleObservacaoClick(turma)}
                           type="button"
                         >
-                          <PiBellSimple />
+                          <PiBellSimple size={20} />
                         </button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <button type="submit" className={styles.submitButton}>
-                Enviar Indicações
-              </button>
+              <div className={styles.buttonArea}>
+                <button type="submit" className={styles.submitButton}>
+                  Enviar Indicações
+                </button>
+              </div>
             </form>
           ) : (
             <p>Nenhuma turma encontrada para esta área.</p>
@@ -286,7 +288,7 @@ export default function ReuniaoArea() {
           severity="warning"
           variant="filled"
           className={styles.snackbar}
-          style={{ backgroundColor: "red", color: "white" }}
+          style={{ backgroundColor: "red", color: "white" }} // não colocar style no componente
         >
           {snackbarMessage}
         </Alert>
