@@ -39,6 +39,10 @@ interface Colegiado {
   img: string;
 }
 
+interface Semestre {
+  semestre: number;
+}
+
 export default function Turma() {
   const [colegiado, setColegiado] = useState<Colegiado | null>(null);
   const [turmas, setTurmas] = useState<Turma[]>([]); // Define Turma[] para o estado das turmas
@@ -46,6 +50,26 @@ export default function Turma() {
   const [itemsPerPage] = useState(9); // Definindo 5 itens por página
   const router = useRouter();
   const { colegiadoId } = router.query;
+  const [semestre, setSemestre] = useState<Semestre | null>(null); //
+
+  useEffect(() => {
+    async function fetchSemestre() {
+      try {
+        const responseSem = await fetch(
+          "http://localhost:3000/colegiado/semestreAtual"
+        );
+        if (!responseSem.ok) {
+          throw new Error("Erro ao buscar o ultimo semestre");
+        }
+
+        const dataSem = await responseSem.json();
+        setSemestre(dataSem);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+      }
+    }
+    fetchSemestre();
+  }, []);
 
   // Função para buscar os dados do colegiado
   const fetchColegiado = async (colegiadoId: string | string[] | undefined) => {
@@ -94,7 +118,10 @@ export default function Turma() {
     <div className={styles.bg}>
       <header>
         <Breadcrumbs />
-        <h2>Solicitação de demanda</h2>
+        <h2>
+          Solicitação de demanda{" "}
+          {semestre ? semestre.semestre : "Carregando..."}{" "}
+        </h2>
         <div className={styles.corpoDepto}>
           <div className={styles.headerName}>
             <div className={styles.headerTitleDiv}>
