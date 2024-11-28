@@ -179,7 +179,7 @@ export default function AlocacoesColegiado() {
                           .map((professor) => `${professor.nome} `)
                           .join(", ")
                       ) : (
-                        <span>Sem professor alocado</span>
+                        <span>SEM INDICAÇÃO</span>
                       )}
                     </td>
                     <td>
