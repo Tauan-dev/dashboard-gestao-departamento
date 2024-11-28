@@ -113,3 +113,24 @@
   background-color: var(--button-color5);
   color: #ffff;
 }
+
+@media (max-width: 1268px) {
+  .modalContent {
+    padding: 7px;
+  }
+
+  .selected {
+    font-size: 15px;
+  }
+
+  .timeColumn {
+    font-size: 12px;
+  }
+
+  .confirmButton {
+    margin-top: 15px;
+    width: 320px;
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

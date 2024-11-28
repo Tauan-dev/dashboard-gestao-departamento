@@ -63,7 +63,7 @@ export default function ProfessorDropdown({
             <Avatar className={style.avatar}>
               <AvatarImage
                 className={style.avatarImg}
-                src={`/${selectedProfessor.img}.png`} // Mostra o professor selecionado
+                src={`/${selectedProfessor.img}`} // Mostra o professor selecionado
                 alt={selectedProfessor.nome}
               />
             </Avatar>
@@ -74,20 +74,20 @@ export default function ProfessorDropdown({
         )}
       </div>
 
-      {/* Dropdown com a lista de professores */}
+
       {isOpen && (
         <ul className={style.dropdownList}>
           {professores.map((professor) => (
             <li
               key={professor.matricula}
               className={style.dropdownItem}
-              onClick={() => handleSelectProfessor(professor)} // Seleciona o professor ao clicar
+              onClick={() => handleSelectProfessor(professor)} 
             >
               <div className={style.professorInfo}>
                 <Avatar className={style.avatar}>
                   <AvatarImage
                     className={style.avatarImg}
-                    src={`/${professor.img}.png`}
+                    src={`/${professor.img}`}
                     alt={professor.nome}
                   />
                 </Avatar>

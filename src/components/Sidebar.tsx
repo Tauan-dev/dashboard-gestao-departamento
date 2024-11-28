@@ -50,11 +50,11 @@ export default function Sidebar() {
                 <Link href="/colegiado/semestre">Semestre</Link>
               </li> */}
               <li>
-                <Link href="/colegiado/colegiado">Selecionar colegiado</Link>
+                <Link href="/colegiado/colegiado">Selecionar Colegiado</Link>
               </li>
               <li>
                 <Link href={`/colegiado/${colegiadoId}/professores`}>
-                  Professores Alocados
+                  Professores Indicados
                 </Link>
               </li>
             </ul>
@@ -101,10 +101,6 @@ export default function Sidebar() {
               <li>
                 <Link href="/area/area">Selecionar Area</Link>
               </li>
-
-              <li>
-                <Link href="/area/inovacao">Inovação</Link>
-              </li>
             </ul>
           </li>
 
@@ -125,10 +121,10 @@ export default function Sidebar() {
               }`}
             >
               <li>
-                <Link href="/professor/curriculo">Currículo</Link>
+                <Link href="/professor/curriculo">Projetos</Link>
               </li>
               <li>
-                <Link href="/professor/publicacoes">Publicações</Link>
+                <Link href="/professor/horarioProf">Horarios</Link>
               </li>
             </ul>
           </li>

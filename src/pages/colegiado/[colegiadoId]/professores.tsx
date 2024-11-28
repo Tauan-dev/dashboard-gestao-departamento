@@ -5,7 +5,7 @@ import Breadcrumbs from "@/components/Breadcumber";
 import { BsMortarboard } from "react-icons/bs";
 import Image from "next/image";
 import Observacao from "../../../components/Obeservacao";
-import { PiBellSimple } from "react-icons/pi";
+import { GoBell } from "react-icons/go";
 
 interface Horario {
   id: number;
@@ -153,8 +153,8 @@ export default function AlocacoesColegiado() {
                   <th>TURMA</th>
                   <th>CH</th>
                   <th>CHS</th>
-                  <th>BACHARELADO/LICENCIATURA</th>
-                  <th>CURSO</th>
+                  <th>BACH/LICENC</th>
+
                   <th>PROFESSORES</th>
                   <th>OBS</th>
                 </tr>
@@ -172,11 +172,7 @@ export default function AlocacoesColegiado() {
                         .map((curso) => curso.tipo)
                         .join(", ")}
                     </td>
-                    <td>
-                      {turma.disciplina.cursos
-                        .map((curso) => curso.nome)
-                        .join(", ")}
-                    </td>
+
                     <td>
                       {turma.professores.length > 0 ? (
                         turma.professores
@@ -192,7 +188,7 @@ export default function AlocacoesColegiado() {
                         onClick={() => handleObservacaoClick(turma)}
                         type="button"
                       >
-                        <PiBellSimple size={20}/>
+                        <GoBell size={20} />
                       </button>
                     </td>
                   </tr>

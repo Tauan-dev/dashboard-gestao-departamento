@@ -9,7 +9,7 @@ import Breadcrumbs from "@/components/Breadcumber";
 import { BsMortarboard } from "react-icons/bs";
 import ProfessorDropdown from "@/components/Professor";
 import Observacao from "@/components/Obeservacao";
-import { PiBellSimple } from "react-icons/pi";
+import { GoBell } from "react-icons/go";
 import ConflictModal from "../../../components/ModalChoque";
 
 interface Horario {
@@ -126,7 +126,7 @@ export default function ReuniaoArea() {
       setSnackbarMessage(
         `O professor com matrícula ${professorMatricula} excede 16 horas semanais com ${totalCargaHoraria} horas.`
       );
-      setSnackbarKey((prevKey) => prevKey + 1); // Incrementa a key para reabrir o Snackbar
+      setSnackbarKey((prevKey) => prevKey + 1);
       setOpenSnackbar(true);
     }
   };
@@ -219,7 +219,7 @@ export default function ReuniaoArea() {
                     <th>TURMA</th>
                     <th>CH</th>
                     <th>CHS</th>
-                    <th>BACHARELADO/LICENCIATURA</th>
+                    <th>BACHAR/LICENC</th>
                     <th>CURSO</th>
                     <th>PROFESSOR</th>
                     <th>OBS</th>
@@ -256,7 +256,7 @@ export default function ReuniaoArea() {
                           onClick={() => handleObservacaoClick(turma)}
                           type="button"
                         >
-                          <PiBellSimple size={20} />
+                          <GoBell size={20} />
                         </button>
                       </td>
                     </tr>
