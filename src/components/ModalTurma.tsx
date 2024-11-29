@@ -93,6 +93,7 @@ export default function ModalComponent({ disciplina }: ModalComponentProps) {
         toggleModal(); // Fecha o modal após a submissão bem-sucedida
       } else {
         console.error("Erro ao enviar o formulário");
+        alert("Código da Turma já cadastrado");
       }
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error);

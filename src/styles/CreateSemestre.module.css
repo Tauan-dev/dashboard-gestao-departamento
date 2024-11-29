@@ -11,7 +11,9 @@
 .create-semestre-container h1 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #333;
+  color: var(--title-text-color3);
+  font: "Inter";
+  font-weight: bold;
 }
 
 .create-semestre-container form {
@@ -54,4 +56,17 @@
 
 .create-semestre-container button:hover {
   background-color: #3700b3;
+}
+
+.semAtual {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid var(--button-color1);
+  margin-top: 20px;
+}
+
+.semAtual h3 {
+  font-family: "Inter";
+  font-weight: bold;
 }

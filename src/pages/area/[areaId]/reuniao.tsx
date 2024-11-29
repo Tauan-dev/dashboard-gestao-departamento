@@ -42,6 +42,10 @@ interface Turma {
   horarios: Horario[];
 }
 
+interface Semestre {
+  semestre: number;
+}
+
 export default function ReuniaoArea() {
   const router = useRouter();
   const { areaId } = router.query;
@@ -56,6 +60,26 @@ export default function ReuniaoArea() {
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarKey, setSnackbarKey] = useState(0); // Estado para gerar nova key
+  const [semestre, setSemestre] = useState<Semestre | null>(null); //
+
+  useEffect(() => {
+    async function fetchSemestre() {
+      try {
+        const responseSem = await fetch(
+          "http://localhost:3000/colegiado/semestreAtual"
+        );
+        if (!responseSem.ok) {
+          throw new Error("Erro ao buscar o ultimo semestre");
+        }
+
+        const dataSem = await responseSem.json();
+        setSemestre(dataSem);
+      } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+      }
+    }
+    fetchSemestre();
+  }, []);
 
   useEffect(() => {
     const fetchTurmasByArea = async () => {
@@ -175,7 +199,11 @@ export default function ReuniaoArea() {
     <div className={styles.bg}>
       <header>
         <Breadcrumbs />
-        <h2>Alocação de Professores</h2>
+        <h2>
+          {" "}
+          Alocação de professores{" "}
+          {semestre ? semestre.semestre : "Carregando..."}{" "}
+        </h2>
         <div className={styles.corpoDepto}>
           <div className={styles.headerName}>
             <div className={styles.headerTitleDiv}>
